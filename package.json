@@ -14,14 +14,24 @@
     "fun",
     "cool"
   ],
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
   "author": "Jakob Ploner",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^9.12.0",
+    "@babel/core": "^7.25.8",
+    "@babel/preset-env": "^7.25.8",
+    "babel-jest": "^29.7.0",
+    "css-loader": "^7.1.2",
     "globals": "^15.11.0",
     "html-webpack-plugin": "^5.6.0",
     "jest": "^29.7.0",
+    "style-loader": "^4.0.0",
     "webpack": "^5.95.0",
     "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "jest-environment-jsdom": "^29.7.0"
   }
 }
