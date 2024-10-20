@@ -6,6 +6,32 @@
     <title>Document</title>
   </head>
   <body>
-    <script defer src="bundle.js"></script>
-  </body>
+    <div class="playground">
+      <div class="board-container human" id="container1"></div>
+      <div class="board-container ai" id="container2"></div>
+    </div>
+
+    <div class="place-ship-cont">
+      <h3>Enter your ship's information</h3>
+      <label for="ship-length">Length of your ship:</label>
+      <select name="ship-length" id="ship-length">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option></option>
+      </select>
+
+      <div class="x-cords-cont">
+        <label for="x-cords-inp" >X Coordinates:</label>
+        <input type="number" class="x-cords-inp" min="0" max="10" id="xCords"/>
+      </div>
+      <div class="y-cords-cont">
+        <label for="y-cords-inp">Y Coordinates:</label>
+        <input type="number" class="y-cords-inp" min="0" max="10" id="yCords"/>
+      </div>
+      <button class="ship-direction-btn" id="shipDirectionBtn">horizontal</button>
+      <button class="add-ship-btn" id="addShipBtn">Add ship</button>
+    </div>
+  <script defer src="bundle.js"></script></body>
 </html>
