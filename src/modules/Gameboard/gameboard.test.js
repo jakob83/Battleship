@@ -46,7 +46,7 @@ describe('addShip() function works', () => {
       isSunk: jest.fn(),
     };
     board.addShip(fakeShip3);
-    expect(board.ships.length).toBe(3); // bcs already added 2 above
+    expect(board.shipsQuantity).toBe(3); // bcs already added 2 above
   });
   test('should check, for if the ships cords arent already used, or outside the board', () => {
     const shipWithWrongCords = {
@@ -60,7 +60,7 @@ describe('addShip() function works', () => {
       isSunk: jest.fn(),
     };
     expect(board.addShip(shipWithWrongCords)).toBe(false);
-    expect(board.ships.length).toBe(2); // like before
+    expect(board.shipsQuantity).toBe(2); // like before
   });
 });
 
@@ -83,7 +83,7 @@ describe('receiveAttack() function works', () => {
     board.receiveAttack([0, 1]); // hit
     board.receiveAttack([1, 1]); // hit
     board.receiveAttack([3, 9]);
-    expect(board.getMissedAttackCords()).toEqual([
+    expect(board.getMissedCords()).toEqual([
       [3, 3],
       [3, 9],
     ]);
@@ -94,5 +94,28 @@ describe('Board is able to report if all ships have sunk', () => {
     fakeShip.isSunk.mockReturnValueOnce(true);
     fakeShip2.isSunk.mockReturnValueOnce(true);
     expect(board.fleetSunk()).toBe(true);
+  });
+});
+
+describe('can generate 5 random Ships', () => {
+  test('board has 5 ships after running addRandomShips()', () => {
+    const newBoard = new GameBoard();
+    newBoard.addRandomShips();
+    expect(newBoard.shipsQuantity).toBe(5);
+    expect(newBoard.getShips()[0].length).toBe(2);
+    expect(newBoard.getShips()[1].length).toBe(3);
+    expect(newBoard.getShips()[2].length).toBe(3);
+    expect(newBoard.getShips()[3].length).toBe(4);
+    expect(newBoard.getShips()[4].length).toBe(5);
+  });
+  test('lengths are right', () => {
+    const newBoard = new GameBoard();
+    newBoard.addRandomShips();
+
+    expect(newBoard.getShips()[0].length).toBe(2);
+    expect(newBoard.getShips()[1].length).toBe(3);
+    expect(newBoard.getShips()[2].length).toBe(3);
+    expect(newBoard.getShips()[3].length).toBe(4);
+    expect(newBoard.getShips()[4].length).toBe(5);
   });
 });

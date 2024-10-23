@@ -16,3 +16,9 @@
 .cell.ship {
   background-color: rgb(68, 68, 68);
 }
+.cell.attacked {
+  background-color: aqua;
+}
+.cell.hit {
+  background-color: red;
+}
