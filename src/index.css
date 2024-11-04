@@ -1,16 +1,56 @@
+:root {
+  --primary-clr: #5eb1bf;
+  --brighter-clr: #cdedf6;
+  --darker-clr: #042a2b;
+  --neutral-clr: #deb49e;
+  --flashy-clr: #ef7b45;
+  --flashy-secondry: #d84727;
+  --big-text-size: 1.8rem;
+  --header-text-size: 3rem;
+  --normal-text-size: 1.3rem;
+
+  background-color: var(--darker-clr);
+  position: relative;
+  font-size: 16px;
+  flex-direction: column;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+:root > * {
+  font-size: var(--normal-text-size);
+  color: var(--brighter-clr);
+}
+.header {
+  position: absolute;
+  top: 10px;
+}
+.info-box {
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  font-size: var(--big-text-size);
+}
 .playground {
   display: flex;
   justify-content: space-around;
 }
 .board-container {
-  width: 30vw;
-  height: 30vw;
+  width: 20vw;
+  height: 20vw;
   display: grid;
   grid-template-rows: repeat(10, 1fr);
   grid-template-columns: repeat(10, 1fr);
+  background-color: var(--primary-clr);
+  box-shadow: 5px 5px 30px black;
 }
 .cell {
-  border: 1px solid black;
+  border: 1px solid var(--darker-clr);
   box-sizing: border-box;
 }
 .cell.ship {
@@ -21,4 +61,102 @@
 }
 .cell.hit {
   background-color: red;
+}
+.cell.hit.sunk {
+  background-color: black;
+}
+
+.error-div.invisible {
+  display: none;
+}
+.error-div {
+  display: flex;
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 5px solid var(--flashy-secondry);
+  box-shadow: 20px 20px 20px black;
+  background-color: var(--flashy-clr);
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 5px;
+  padding: 20px 20px;
+}
+.error-div p {
+  font-size: 2rem;
+}
+.error-div button {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--neutral-clr);
+  transition: all 0.2s;
+}
+.error-div button:hover {
+  background-color: var(--brighter-clr);
+}
+.place-ship-cont {
+  font-size: 1rem;
+  padding: 15px 30px;
+  height: 30vh;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: start;
+  background-color: var(--primary-clr);
+  color: var(--darker-clr);
+  border-radius: 5px;
+  align-self: center;
+}
+.place-ship-cont.hidden {
+  display: none;
+}
+.length-direction-cont {
+  display: flex;
+  gap: 40px;
+}
+.place-ship-cont input,
+.place-ship-cont select {
+  font-size: 1rem;
+  width: 60px;
+  box-sizing: border-box;
+  height: 30px;
+  background-color: var(--darker-clr);
+  color: var(--brighter-clr);
+  border: none;
+  border-radius: 5px;
+}
+.place-ship-cont button {
+  font-size: 1rem;
+  border: none;
+  align-self: center;
+  padding: 15px 30px;
+  border-radius: 5px;
+  background-color: var(--darker-clr);
+  color: var(--brighter-clr);
+  transition: all 0.2s;
+}
+.place-ship-cont button:hover {
+  box-shadow: 5px 5px 10px black;
+}
+.start-game-btn {
+  background-color: var(--neutral-clr);
+  border: none;
+  color: var(--darker-clr);
+  padding: 20px 40px;
+  border-radius: 5px;
+  align-self: center;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+.start-game-btn.hidden {
+  display: none;
+}
+.start-game-btn:hover {
+  background-color: var(--flashy-clr);
 }

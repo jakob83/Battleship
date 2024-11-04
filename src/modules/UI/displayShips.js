@@ -1,10 +1,19 @@
-function displayShips(ships, containerDOM) {
+function displayShips(ships, containerDOM, onlySunken) {
   const nodes = containerDOM.children;
   ships.forEach((ship) => {
+    let cls = 'ship';
+    if (onlySunken) {
+      if (ship.isSunk()) {
+        cls = 'sunk';
+      } else {
+        return;
+      }
+    }
+
     for (let i = 0; i < ship.cords.length; i++) {
       const c = ship.cords[i];
       const index = cordsToIndex(c);
-      addShipClass(nodes[index]);
+      addClass(nodes[index], cls);
     }
   });
 }
@@ -15,22 +24,17 @@ function displayShotsOnBoard(board, containerDOM) {
 
   misses.forEach((cords) => {
     const index = cordsToIndex(cords);
-    addAttackedClass(nodes[index]);
+    addClass(nodes[index], 'attacked');
   });
 
   hits.forEach((cords) => {
     const index = cordsToIndex(cords);
-    addHittedClass(nodes[index]);
+    addClass(nodes[index], 'hit');
   });
 }
-function addHittedClass(el) {
-  el.classList.add('hit');
-}
-function addAttackedClass(el) {
-  el.classList.add('attacked');
-}
-function addShipClass(el) {
-  el.classList.add('ship');
+
+function addClass(el, c) {
+  el.classList.add(c);
 }
 function cordsToIndex(cords) {
   return (9 - cords[1]) * 10 + cords[0];

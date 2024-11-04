@@ -1,4 +1,4 @@
-const shiplength = document.querySelector('#ship-length');
+const shiplength = document.querySelector('#shipLength');
 const cordsX = document.querySelector('#xCords');
 const cordsY = document.querySelector('#yCords');
 const direction = document.querySelector('#shipDirectionBtn');

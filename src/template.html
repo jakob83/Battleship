@@ -6,21 +6,34 @@
     <title>Document</title>
   </head>
   <body>
+    <h2 class="header">Tsagga's Battleship</h2>
+    <div class="info-box">
+      <p id="infoText"></p>
+    </div>
     <div class="playground">
       <div class="board-container human" id="container1"></div>
       <div class="board-container ai" id="container2"></div>
     </div>
 
-    <div class="place-ship-cont">
+    <div class="place-ship-cont" id="placeShipCont">
       <h3>Enter your ship's information</h3>
-      <label for="ship-length">Length of your ship:</label>
-      <select name="ship-length" id="ship-length">
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option></option>
-      </select>
+      <div class="length-direction-cont">
+        <div class="length">
+          <label for="ship-length">Length of your ship:</label>
+          <select name="shipLength" id="shipLength">
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option></option>
+          </select>
+        </div>
+        <div class="direction">
+          <label for="shipDirectionBtn">Direction:</label>
+          <button class="ship-direction-btn" id="shipDirectionBtn">horizontal</button>
+        </div>
+
+      </div>
 
       <div class="x-cords-cont">
         <label for="x-cords-inp" >X Coordinates:</label>
@@ -30,9 +43,13 @@
         <label for="y-cords-inp">Y Coordinates:</label>
         <input type="number" class="y-cords-inp" min="0" max="10" id="yCords"/>
       </div>
-      <button class="ship-direction-btn" id="shipDirectionBtn">horizontal</button>
       <button class="add-ship-btn" id="addShipBtn">Add ship</button>
     </div>
     <button class="start-game-btn" id="startGameBtn">Start</button>
+
+    <div class="error-div invisible" id="errorDiv">
+      <p class="error-msg" id="errorMsgP"></p>
+      <button id="errorOKBtn">OK</button>
+    </div>
   </body>
 </html>

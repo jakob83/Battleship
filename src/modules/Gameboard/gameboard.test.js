@@ -62,6 +62,34 @@ describe('addShip() function works', () => {
     expect(board.addShip(shipWithWrongCords)).toBe(false);
     expect(board.shipsQuantity).toBe(2); // like before
   });
+  test('should check, for cords being out of bounds', () => {
+    const shipWithWrongCords = {
+      length: 4,
+      cords: [
+        [8, 8],
+        [8, 9],
+        [8, 10],
+      ],
+      hit: jest.fn(), // mock the hit function,
+      isSunk: jest.fn(),
+    };
+    expect(board.addShip(shipWithWrongCords)).toBe(false);
+    expect(board.shipsQuantity).toBe(2); // like before
+  });
+  test('should check, for cords being out of bounds, für X-Achse', () => {
+    const shipWithWrongCords = {
+      length: 4,
+      cords: [
+        [8, 7],
+        [9, 7],
+        [10, 7],
+      ],
+      hit: jest.fn(), // mock the hit function,
+      isSunk: jest.fn(),
+    };
+    expect(board.addShip(shipWithWrongCords)).toBe(false);
+    expect(board.shipsQuantity).toBe(2); // like before
+  });
 });
 
 describe('receiveAttack() function works', () => {
@@ -111,11 +139,25 @@ describe('can generate 5 random Ships', () => {
   test('lengths are right', () => {
     const newBoard = new GameBoard();
     newBoard.addRandomShips();
-
     expect(newBoard.getShips()[0].length).toBe(2);
     expect(newBoard.getShips()[1].length).toBe(3);
     expect(newBoard.getShips()[2].length).toBe(3);
     expect(newBoard.getShips()[3].length).toBe(4);
     expect(newBoard.getShips()[4].length).toBe(5);
+  });
+  test('Ships are correct and dont go out of bounds', () => {
+    const newBoard = new GameBoard();
+    newBoard.addRandomShips();
+  });
+});
+
+describe('AreValidAttackCords to check attack cords for validity', () => {
+  test('works with cords above 9', () => {
+    expect(board.areValidAttackCords([0, 20])).toBe(false);
+    expect(board.areValidAttackCords([8, 8])).toBe(true);
+  });
+  test('works with cords that have already been attacked', () => {
+    board.receiveAttack([6, 6]);
+    expect(board.areValidAttackCords([6, 6])).toBe(false);
   });
 });
